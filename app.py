@@ -1,5 +1,23 @@
 import streamlit as st
 import joblib
+
+# Load the trained model
+model = joblib.load("cancer_risk_predictor.pkl")
+
+# App Title
+st.title("Cervical Cancer Risk Predictor")
+
+# User Inputs
+age = st.number_input("Enter Age:", min_value=18, max_value=100, value=25)
+smokes = st.selectbox("Do you smoke?", ["No", "Yes"])
+
+# Format Inputs for Model
+input_data = [[age, 1 if smokes == "Yes" else 0]]
+
+# Predict Button
+if st.button("Predict Risk"):
+    prediction = model.predict(input_data)
+    st.success(f"Risk Level: {'High' if prediction[0] == 1 else 'Low'}")
 import pandas as pd
 
 # Load the trained model
