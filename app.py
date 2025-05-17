@@ -14,10 +14,7 @@ smokes = st.selectbox("Do you smoke?", ["No", "Yes"])
 # Format Inputs for Model
 input_data = [[age, 1 if smokes == "Yes" else 0]]
 
-# Predict Button
-if st.button("Predict Risk"):
-    prediction = model.predict(input_data)
-    st.success(f"Risk Level: {'High' if prediction[0] == 1 else 'Low'}")
+
 import pandas as pd
 
 # Load the trained model
