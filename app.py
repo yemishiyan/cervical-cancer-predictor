@@ -4,16 +4,6 @@ import joblib
 # Load the trained model
 model = joblib.load("cancer_risk_predictor.pkl")
 
-# App Title
-st.title("Cervical Cancer Risk Predictor")
-
-# User Inputs
-age = st.number_input("Enter Age:", min_value=18, max_value=100, value=25)
-smokes = st.selectbox("Do you smoke?", ["No", "Yes"])
-
-# Format Inputs for Model
-input_data = [[age, 1 if smokes == "Yes" else 0]]
-
 
 import pandas as pd
 
